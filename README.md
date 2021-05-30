@@ -13,6 +13,8 @@ Robot Framework é uma ferramenta de automação de testes que faz uma abstraç�
 
 Como cliente da Neoprospecta preciso criar filtros taxonômicos (com microrganismos) podendo adicionar vários níveis dentro (ex: espécie, gênero, família, etc) para que eu possa visualizar no resultado rapidamente as taxonomias mais interessantes para mim.
 
+![fluxo_teste](.\video\fluxo_teste.gif)
+
 ****
 
 ### **Como executar**

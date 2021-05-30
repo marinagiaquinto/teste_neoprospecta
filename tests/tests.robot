@@ -64,9 +64,34 @@ Caso de Teste 10: Taxonomias Adicionadas
     Dado que estou em "Taxonomias Adicionadas"
     Quando adicionada todas as opções desejadas
     Então deve ser possível salvá-las exibindo as opções selecionadas na página "Criar Filtro Taxonômico"
+
+Caso de Teste 11: Salvar Filtro
+   Dado que estou na página "Criar Filtro Taxonômico" com o filtro escolhido e o "Nome do Filtro" preenchidos
+   Quando clico no botão "Salvar"
+   Então devo ser redirecionada a página "Lista de Filtros Taxonômicos"
+
+Caso de Teste 12: Selecionar Filtro Padrão
+  Dado que estou na página Lista de Filtros Taxonômicos
+  Quando seleciono "Filtro Padrão"
+  Então ele deve habilitar com sucesso a opção de "Filtro Padrão"
+
+Caso de Teste 13: Desselecionar Filtro Padrão
+   Dado que estou na pagina Lista de Filtros Taxonômicos
+   Quando desseleciono "Filtro Padrão"
+   Então ele deve desabilitar com sucesso a opção de "Filtro Padrão"
+
+Caso de Teste 14: Verificar Edição do Filtro
+    Dado que ainda estou na página "Lista de Filtros Taxonômicos"
+    Quando Clico em Editar
+    Então devo ser levado a página "Editar Filtro Taxonômico"
+
+Caso de Teste 15: Editando
+   Dado que estou na página "Editar Filtro Taxonômico"
+   Quando excluo um item
+   E salvo novamente a página
+#   Então ele deve salvar com sucesso a anteração e retornar a página "Lista de Filtros Taxonômicos"
 #
-# Caso de Teste 11: Salvar Filtro
-#   Dado que estou na página "Criar Filtro Taxonômico" com o filtro escolhido e o "Nome do Filtro" preenchidos
-#   Quando clico no botão "Salvar"
-#   Então devo ser redirecionada a página "Lista de Filtros Taxonômicos"
-#   E nela deve conter o "Nome do Filtro" com os ícones "Tornar Filtro Padrão", "Editar Filtro" e "Remover Filtro"
+# Caso de Teste 16: Excluindo Filtro
+#   Dado que estou em "Lista de Filtros Taxonômicos"
+#   Quando clico no botão "exlcuir"
+#   Então ele deve excluir o filtro criado com sucesso

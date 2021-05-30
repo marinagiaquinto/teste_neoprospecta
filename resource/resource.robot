@@ -16,6 +16,7 @@ Fechar navegador
 #Caso de teste 1
 Dado que estou na página de login do site
   Open Browser       https://prova-dot-bioview-neopct.appspot.com   ${BROWSER}
+  Maximize Browser Window
 
 Quando colocar login e senha corretos
   Wait Until Element Is Visible  xpath=/html//div[2]//h1
@@ -99,15 +100,15 @@ Dado que estou em "Buscador de Taxonomias"
   Page Should Contain             Buscador de Taxonomias
 
 Quando clico em "Filtro por nome científico"
-  Sleep                           9s
+  Sleep                           10s
   Page Should Contain             Bacillus cereus
   Mouse Over                      xpath=//*[@id="mat-dialog-0"]//mat-form-field[2]//button
   Click Button                    xpath=//*[@id="mat-dialog-0"]//mat-form-field[2]//button
-  Sleep                           3s
+  Sleep                           2s
 
 E coloco o nome "Trichosporonaceae"
   Input Text                      id=mat-input-5     Trichosporonaceae
-  Sleep                           3s
+  Sleep                           2s
 
 Então deve ser aberta a opção do item selecionado
   Page Should Contain             175944
@@ -130,7 +131,7 @@ E coloco o nome "Clostridium senegalense"
   Clear Element Text              id=mat-input-5
   Input Text                      id=mat-input-5     Clostridium senegalense
   Click Element                   id=mat-input-5
-  Sleep                           3s
+  Sleep                           1s
 
 Então deve de novo ser aberta a opção do item selecionado
   Page Should Contain            1465809
@@ -156,7 +157,7 @@ E seleciono a opção "Reino"
     Click Element                   xpath=//*[@id="mat-option-8"]/span
 
 Então devem ser abertas as opções do item "Reino"
-    Sleep                           14s
+    Sleep                           10s
     Page Should Contain             Eukaryota
 
 E deve então ser possível adicioná-los a partir do botão "+" e exibir a mensagem "Taxonomia adicionada ao filtro"
@@ -179,7 +180,7 @@ E seleciono a opção "Classe"
   Click Element                   xpath=//*[@id="mat-option-10"]/span
 
 Então devem ser abertas as opções do item "Classe"
-  Sleep                           14s
+  Sleep                           10s
   Page Should Contain             Negativicutes
 
 E de novo deve ser possível adicioná-los a partir do botão "+" e exibir a mensagem "Taxonomia adicionada ao filtro"
@@ -190,7 +191,7 @@ E de novo deve ser possível adicioná-los a partir do botão "+" e exibir a men
 
 #Caso de Teste 10
 Dado que estou em "Taxonomias Adicionadas"
-  Page Should Contain    Taxonomias Adicionadas
+  Page Should Contain    Taxonomias adicionadas
 
 Quando adicionada todas as opções desejadas
   Page Should Contain             Trichosporonaceae
@@ -199,11 +200,86 @@ Quando adicionada todas as opções desejadas
   Page Should Contain             Negativicutes
 
 Então deve ser possível salvá-las exibindo as opções selecionadas na página "Criar Filtro Taxonômico"
-  Mouse Over                     xpath=//*[@id="mat-dialog-1"]//div/mat-dialog-actions//div/button[2]
-  Set Focus To Element           xpath=//*[@id="mat-dialog-1"]//div/mat-dialog-actions//div/button[2]
-  Click Button                   xpath=//*[@id="mat-dialog-1"]//div/mat-dialog-actions//div/button[2]
+  Mouse Over                     xpath=//mat-dialog-actions//button[2]
+  Click Button                   xpath=//mat-dialog-actions//button[2]
   Page Should Contain            Criar Filtro Taxonômico
-  Page Should Contain            Trichosporonaceae
+  Wait Until Element Is Visible  xpath=//mat-row[1]/mat-cell[2]
   Page Should Contain            Clostridium senegalense
-  Page Should Contain            Fungi
   Page Should Contain            Negativicutes
+  Page Should Contain            Fungi
+
+
+
+#Caso de Teste 11
+Dado que estou na página "Criar Filtro Taxonômico" com o filtro escolhido e o "Nome do Filtro" preenchidos
+  Scroll Element Into View          xpath=//div/div/form/div[1]/div[1]//span
+  Mouse Over                        xpath=/html//mat-form-field[1]/div/div[1]/div
+  Input Text                        xpath=//mat-form-field[1]/div/div[1]/div/input     Teste Neoprostecta
+
+Quando clico no botão "Salvar"
+  Scroll Element Into View          xpath=//form/div[2]/div[2]/a
+  Mouse Over                        xpath=//div[3]/div/button[2]
+  Click Button                      xpath=//div[3]/div/button[2]
+
+Então devo ser redirecionada a página "Lista de Filtros Taxonômicos"
+  Wait Until Element Is Visible    xpath=//mat-toolbar-row/span
+  Page Should Contain              Teste Neoprostecta
+
+
+#Caso de Teste 12
+Dado que estou na página Lista de Filtros Taxonômicos
+  Page Should Contain          Lista de Filtros Taxonômicos
+
+Quando seleciono "Filtro Padrão"
+  Sleep                       2s
+  Mouse Over                  xpath=//mat-cell[7]/a[1]/mat-icon
+  Sleep                       2s
+  Click Element               xpath=//mat-cell[7]/a[1]/mat-icon
+
+Então ele deve habilitar com sucesso a opção de "Filtro Padrão"
+   Sleep                      2s
+   Page Should Contain        É PADRÃO
+
+#Caso de Teste 13
+Dado que estou na pagina Lista de Filtros Taxonômicos
+  Page Should Contain          Lista de Filtros Taxonômicos
+
+Quando desseleciono "Filtro Padrão"
+  Sleep                       2s
+  Mouse Over                  xpath=//mat-cell[7]/a[1]/mat-icon
+  Sleep                       2s
+  Click Element               xpath=//mat-cell[7]/a[1]/mat-icon
+
+Então ele deve desabilitar com sucesso a opção de "Filtro Padrão"
+  Sleep                        2s
+  Page Should Contain          NÃO É PADRÃO
+
+
+#Caso de Teste 14
+Dado que ainda estou na página "Lista de Filtros Taxonômicos"
+   Page Should Contain         Lista de Filtros Taxonômicos
+
+Quando Clico em Editar
+   Mouse Over                  xpath=//mat-cell[7]/a[2]
+   Click Element               xpath=//mat-cell[7]/a[2]
+
+Então devo ser levado a página "Editar Filtro Taxonômico"
+   Page Should Contain         Editar Filtro Taxonômico
+
+
+#Caso de Teste 15
+Dado que estou na página "Editar Filtro Taxonômico"
+   Sleep                           3s
+   Wait Until Element Is Visible   xpath=//form/div[1]/div[1]/div/span
+
+# Quando excluo um item e salvo novamente a página
+#    Scroll Element Into View      xpath=//div[3]/div/button[2]
+#    Mouse Over                    xpath=//mat-row[1]/mat-cell[4]/button/span[1]/mat-icon
+#    Click Button                  xpath=//mat-row[1]/mat-cell[4]/button/span[1]/mat-icon
+#    Wait Until Element Is Visible xpath=//*[@id="mat-dialog-title-0"]
+#    Mouse Over                    xpath=//span[2]/button/span[1]
+#    Click Button                  xpath=//span[2]/button/span[1]
+#
+# E salvo novamente a página
+#    Mouse Over                    xpath=//div[3]/div/button[2]
+#    Click Button                  xpath=//div[3]/div/button[2]

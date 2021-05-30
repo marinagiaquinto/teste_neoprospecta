@@ -1,6 +1,6 @@
 ***Settings***
 Resource   ../resource/resource.robot
-#Suite Teardown  Fechar navegador
+Suite Teardown  Fechar navegador
 
 ***Test Case***
 Caso de Teste 1: Login
@@ -88,10 +88,10 @@ Caso de Teste 14: Verificar Edição do Filtro
 Caso de Teste 15: Editando
    Dado que estou em "Editar Filtro Taxonômico"
    Quando excluo um item
-#   E salvo novamente a página
-#   Então ele deve salvar com sucesso a anteração e retornar a página "Lista de Filtros Taxonômicos"
-#
-# Caso de Teste 16: Excluindo Filtro
-#   Dado que estou em "Lista de Filtros Taxonômicos"
-#   Quando clico no botão "exlcuir"
-#   Então ele deve excluir o filtro criado com sucesso
+   E salvo novamente a página
+   Então ele deve salvar e retornar a página "Lista de Filtros Taxonômicos"
+
+Caso de Teste 16: Excluindo Filtro
+   Dado que estou de novo em Lista de Filtros Taxonômicos
+   Quando clico no botão "exlcuir"
+   Então ele deve excluir o filtro criado com sucesso

@@ -12,7 +12,6 @@ ${SENHA}     teste.qa.1@neoprospecta.com
 Fechar navegador
   Close Browser
 
-
 #Caso de teste 1
 Dado que estou na página de login do site
   Open Browser       https://prova-dot-bioview-neopct.appspot.com   ${BROWSER}
@@ -100,7 +99,7 @@ Dado que estou em "Buscador de Taxonomias"
   Page Should Contain             Buscador de Taxonomias
 
 Quando clico em "Filtro por nome científico"
-  Sleep                           10s
+  Sleep                           12s
   Page Should Contain             Bacillus cereus
   Mouse Over                      xpath=//*[@id="mat-dialog-0"]//mat-form-field[2]//button
   Click Button                    xpath=//*[@id="mat-dialog-0"]//mat-form-field[2]//button
@@ -157,7 +156,7 @@ E seleciono a opção "Reino"
     Click Element                   xpath=//*[@id="mat-option-8"]/span
 
 Então devem ser abertas as opções do item "Reino"
-    Sleep                           10s
+    Sleep                           12s
     Page Should Contain             Eukaryota
 
 E deve então ser possível adicioná-los a partir do botão "+" e exibir a mensagem "Taxonomia adicionada ao filtro"
@@ -180,7 +179,7 @@ E seleciono a opção "Classe"
   Click Element                   xpath=//*[@id="mat-option-10"]/span
 
 Então devem ser abertas as opções do item "Classe"
-  Sleep                           10s
+  Sleep                           12s
   Page Should Contain             Negativicutes
 
 E de novo deve ser possível adicioná-los a partir do botão "+" e exibir a mensagem "Taxonomia adicionada ao filtro"
@@ -231,13 +230,13 @@ Dado que estou na página Lista de Filtros Taxonômicos
   Page Should Contain          Lista de Filtros Taxonômicos
 
 Quando seleciono "Filtro Padrão"
-  Sleep                       2s
+  Sleep                       1s
   Mouse Over                  xpath=//mat-cell[7]/a[1]/mat-icon
-  Sleep                       2s
+  Sleep                       1s
   Click Element               xpath=//mat-cell[7]/a[1]/mat-icon
 
 Então ele deve habilitar com sucesso a opção de "Filtro Padrão"
-   Sleep                      2s
+   Sleep                      1s
    Page Should Contain        É PADRÃO
 
 #Caso de Teste 13
@@ -245,13 +244,13 @@ Dado que estou na pagina Lista de Filtros Taxonômicos
   Page Should Contain          Lista de Filtros Taxonômicos
 
 Quando desseleciono "Filtro Padrão"
-  Sleep                       2s
+  Sleep                       1s
   Mouse Over                  xpath=//mat-cell[7]/a[1]/mat-icon
-  Sleep                       2s
+  Sleep                       1s
   Click Element               xpath=//mat-cell[7]/a[1]/mat-icon
 
 Então ele deve desabilitar com sucesso a opção de "Filtro Padrão"
-  Sleep                        2s
+  Sleep                        1s
   Page Should Contain          NÃO É PADRÃO
 
 
@@ -270,19 +269,38 @@ Então devo ser levado a página "Editar Filtro Taxonômico"
 
 #Caso de Teste 15
 Dado que estou em "Editar Filtro Taxonômico"
-   Sleep                           3s
    Wait Until Element Is Visible   xpath=//form/div[1]/div[1]/div/span
 
 Quando excluo um item
-    Scroll Element Into View      xpath=//div[3]/div/button[2]
-    Mouse Over                    xpath=//mat-row[1]/mat-cell[4]/button/span[1]/mat-icon
-    Set Focus To Element          xpath=//mat-row[1]/mat-cell[4]/button
-    Click Button                  xpath=//mat-row[1]/mat-cell[4]/button
-    Sleep                         2s
-    Wait Until Element Is Visible xpath=//*[@id="mat-dialog-title-0"]
-    Mouse Over                    xpath=//span[2]/button/span[1]
-    Click Button                  xpath=//span[2]/button/span[1]
-#
-# E salvo novamente a página
-#    Mouse Over                    xpath=//div[3]/div/button[2]
-#    Click Button                  xpath=//div[3]/div/button[2]
+    Scroll Element Into View        xpath=//div[3]/div/button[2]
+    Mouse Over                      xpath=//mat-row[1]/mat-cell[4]/button/span[1]/mat-icon
+    Set Focus To Element            xpath=//mat-row[1]/mat-cell[4]/button
+    Click Button                    xpath=//mat-row[1]/mat-cell[4]/button
+    Sleep                           2s
+    Wait Until Element Is Visible   xpath=//div[2]//ng-component/div[1]
+    Mouse Over                      xpath=//div[2]/span[2]/button
+    Click Button                    xpath=//div[2]/span[2]/button
+
+E salvo novamente a página
+    Mouse Over                      xpath=//div[3]/div/button[2]
+    Click Button                    xpath=//div[3]/div/button[2]
+
+Então ele deve salvar e retornar a página "Lista de Filtros Taxonômicos"
+    Wait Until Element Is Visible    xpath=//mat-cell[7]/a[3]
+    Page Should Contain              3
+
+
+#Caso de Teste 16
+Dado que estou de novo em Lista de Filtros Taxonômicos
+  Page Should Contain               Lista de Filtros Taxonômicos
+  Page Should Contain               Descrição
+
+Quando clico no botão "exlcuir"
+  Mouse Over                        xpath=//mat-cell[7]/a[3]
+  Click Element                     xpath=//mat-cell[7]/a[3]
+
+Então ele deve excluir o filtro criado com sucesso
+  Mouse Over                       xpath=//span[2]/button
+  Click Element                    xpath=//span[2]/button
+  Wait Until Element Is Visible    xpath=//app-filter-list/div/div/div[1]/div
+  Page Should Contain              Nenhum filtro taxonômico encontrado.

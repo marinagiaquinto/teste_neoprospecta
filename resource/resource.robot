@@ -264,21 +264,24 @@ Quando Clico em Editar
    Click Element               xpath=//mat-cell[7]/a[2]
 
 Então devo ser levado a página "Editar Filtro Taxonômico"
-   Page Should Contain         Editar Filtro Taxonômico
+  Sleep                        3s
+  Page Should Contain         Editar Filtro Taxonômico
 
 
 #Caso de Teste 15
-Dado que estou na página "Editar Filtro Taxonômico"
+Dado que estou em "Editar Filtro Taxonômico"
    Sleep                           3s
    Wait Until Element Is Visible   xpath=//form/div[1]/div[1]/div/span
 
-# Quando excluo um item e salvo novamente a página
-#    Scroll Element Into View      xpath=//div[3]/div/button[2]
-#    Mouse Over                    xpath=//mat-row[1]/mat-cell[4]/button/span[1]/mat-icon
-#    Click Button                  xpath=//mat-row[1]/mat-cell[4]/button/span[1]/mat-icon
-#    Wait Until Element Is Visible xpath=//*[@id="mat-dialog-title-0"]
-#    Mouse Over                    xpath=//span[2]/button/span[1]
-#    Click Button                  xpath=//span[2]/button/span[1]
+Quando excluo um item
+    Scroll Element Into View      xpath=//div[3]/div/button[2]
+    Mouse Over                    xpath=//mat-row[1]/mat-cell[4]/button/span[1]/mat-icon
+    Set Focus To Element          xpath=//mat-row[1]/mat-cell[4]/button
+    Click Button                  xpath=//mat-row[1]/mat-cell[4]/button
+    Sleep                         2s
+    Wait Until Element Is Visible xpath=//*[@id="mat-dialog-title-0"]
+    Mouse Over                    xpath=//span[2]/button/span[1]
+    Click Button                  xpath=//span[2]/button/span[1]
 #
 # E salvo novamente a página
 #    Mouse Over                    xpath=//div[3]/div/button[2]

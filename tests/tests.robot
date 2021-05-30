@@ -86,9 +86,9 @@ Caso de Teste 14: Verificar Edição do Filtro
     Então devo ser levado a página "Editar Filtro Taxonômico"
 
 Caso de Teste 15: Editando
-   Dado que estou na página "Editar Filtro Taxonômico"
+   Dado que estou em "Editar Filtro Taxonômico"
    Quando excluo um item
-   E salvo novamente a página
+#   E salvo novamente a página
 #   Então ele deve salvar com sucesso a anteração e retornar a página "Lista de Filtros Taxonômicos"
 #
 # Caso de Teste 16: Excluindo Filtro
